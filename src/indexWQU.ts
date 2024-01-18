@@ -1,5 +1,5 @@
 import readline from 'readline-sync';
-import { WeightedQuickUnion } from './weightedQuickUnion';
+import { WeightedQuickUnion } from './weightedQuickUnionUF';
 
 let N = readline.questionInt('input initial number of elements: ');
 let uf = new WeightedQuickUnion(N);
