@@ -10,7 +10,7 @@ export class Percolation {
 
   constructor(n: number) {
     this.size = n;
-    this.top = 0;
+    this.top = this.size * this.size;
     this.bottom = this.size * this.size + 1;
     this.uf = new WQUPC(n * n + 2);
     this.opened = Array(n * n).fill(false);
@@ -18,7 +18,7 @@ export class Percolation {
   }
 
   private xyTo1D(row: number, col: number): number {
-    return this.size * (row - 1) + col;
+    return this.size * (row - 1) + col - 1;
   }
 
   open(row: number, col: number): void {
@@ -47,7 +47,7 @@ export class Percolation {
       this.uf.union(this.xyTo1D(row, col), this.xyTo1D(row, col + 1));
     }
 
-    ++this.sitesOpened;
+    this.sitesOpened++;
   }
 
   openRandom(): void {
@@ -78,8 +78,8 @@ export class Percolation {
   gridVisualizer(): string {
     let grid: string = '';
 
-    for (let row = 0; row < this.size; row++) {
-      for (let col = 0; col < this.size; col++) {
+    for (let row = 1; row <= this.size; row++) {
+      for (let col = 1; col <= this.size; col++) {
         if (this.isOpen(row, col) && this.isFull(row, col)) {
           grid += ' ✔ ';
         } else if (this.isOpen(row, col)) {

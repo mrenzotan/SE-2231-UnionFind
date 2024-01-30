@@ -14,15 +14,16 @@ export class WQUPC {
   }
 
   connected(p: number, q: number): boolean {
-    return this.ids[p] === this.ids[q];
+    return this.root(p) === this.root(q);
   }
 
   root(i: number) {
-    while (i !== this.ids[i]) {
+    let id = this.ids[i];
+    while (id !== this.ids[id]) {
       this.ids[i] = this.ids[this.ids[i]];
-      i = this.ids[i];
+      id = this.ids[id];
     }
-    return i;
+    return id;
   }
 
   union(p: number, q: number) {
