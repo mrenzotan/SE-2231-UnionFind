@@ -21,11 +21,10 @@ export class PercolationStats {
         sitesOpened++;
       }
 
-      // console.log(percolation.opened, 'grids');
-
-      console.log(`Exp No. ${i + 1}`);
-      console.log(percolation.gridVisualizer());
-      console.log(`Sites opened: ${sitesOpened}\n`);
+      // --UNCOMMENT FOR VISUALIZER--
+      // console.log(`Exp No. ${i + 1}`);
+      // console.log(percolation.gridVisualizer());
+      // console.log(`Sites opened: ${sitesOpened}\n`);
 
       this.thresholds.push(sitesOpened / (n * n));
     }
